@@ -680,7 +680,11 @@ var notie = function() {
 			selectChoice.onclick = (function(i) { return function() {
 				selectHide();
 				setTimeout(function() {
-					funcs[i]();
+                  if (funcs[i]) {
+                    funcs[i]();
+                  } else {
+                    funcs(i);
+                  }
 				}, (options.animationDelay + 10));
 			};})(i);
 			
@@ -824,7 +828,8 @@ var notie = function() {
         alert: alert,
         confirm: confirm,
         input: input,
-		select: select
+		select: select,
+        selectShow: selectShow
     };
 
 }();
